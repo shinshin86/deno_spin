@@ -20,6 +20,10 @@ for (let i = 0; i < 15; i++) {
 }
 ```
 
+## GIF
+
+![Demo gif](https://user-images.githubusercontent.com/8216064/144514238-cac872db-f876-46d8-a889-b7a0a09f7ff8.gif)
+
 ## Thank you
 
 The implementation in this repository is a port of the implementation in
