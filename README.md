@@ -5,7 +5,7 @@ Deno porting of [go-spin](https://github.com/tj/go-spin).
 ## Usage
 
 ```typescript
-import Spinner from "https://deno.land/x/deno_spin@v0.0.1/mod.ts";
+import Spinner from "https://deno.land/x/deno_spin@v0.0.3/mod.ts";
 
 console.log("[Default] box1: ⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏");
 const box1 = new Spinner();
