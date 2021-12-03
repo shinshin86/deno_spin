@@ -29,6 +29,21 @@ drawInterval.
 - [type](https://github.com/shinshin86/deno_spin/blob/main/mod.ts#L1)
 - drawInterval
 
+### Note
+
+Note that until `v0.0.2`, the parameters for instance creation looked like this.
+
+```typescript
+// new Spinner(type, drawInterval)
+new Spinner("box1", 100);
+```
+
+For `v0.0.3` and later, please set the parameters as follows.
+
+```typescript
+new Spinner({ type: "box1", drawInterval: 100 });
+```
+
 ## GIF
 
 ![Demo gif](https://user-images.githubusercontent.com/8216064/144514238-cac872db-f876-46d8-a889-b7a0a09f7ff8.gif)
