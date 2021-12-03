@@ -31,6 +31,7 @@ export default class Spinner {
 
   constructor(props?: Partial<Spinner>) {
     if (props?.type) {
+      this.type = props.type;
       this.#frames = spinnerType[props.type].split("");
     }
 
