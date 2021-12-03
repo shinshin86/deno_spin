@@ -23,16 +23,20 @@ const sleep = (msec: number): Promise<void> =>
 type SpinnerType = keyof typeof spinnerType;
 
 export default class Spinner {
-  #frames: Array<string>;
-  #length: number;
-  #pos: number;
-  #drawInterval: number;
+  type: SpinnerType = "box1";
+  drawInterval: number = 50;
+  #frames: Array<string> = spinnerType[this.type].split("");
+  #length: number = this.#frames.length;
+  #pos: number = 0;
 
-  constructor(type?: SpinnerType, drawInterval?: number) {
-    this.#frames = spinnerType[type || "box1"].split("");
-    this.#length = this.#frames.length;
-    this.#pos = 0;
-    this.#drawInterval = drawInterval || 50;
+  constructor(props?: Partial<Spinner>) {
+    if (props?.type) {
+      this.#frames = spinnerType[props.type].split("");
+    }
+
+    if (props?.drawInterval) {
+      this.drawInterval = props.drawInterval;
+    }
   }
 
   private getCurrentSpin(): string {
@@ -48,7 +52,7 @@ export default class Spinner {
   public async current(): Promise<void> {
     const spinnerText = new TextEncoder().encode(this.getCurrentSpin());
     Deno.writeAllSync(Deno.stdout, spinnerText);
-    await sleep(this.#drawInterval);
+    await sleep(this.drawInterval);
     const clear = new TextEncoder().encode("\r");
     Deno.writeAllSync(Deno.stdout, clear);
   }
@@ -56,7 +60,7 @@ export default class Spinner {
   public async next(): Promise<void> {
     const spinnerText = new TextEncoder().encode(this.getNextSpin());
     Deno.writeAllSync(Deno.stdout, spinnerText);
-    await sleep(this.#drawInterval);
+    await sleep(this.drawInterval);
     const clear = new TextEncoder().encode("\r");
     Deno.writeAllSync(Deno.stdout, clear);
   }
